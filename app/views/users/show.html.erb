@@ -1,0 +1,13 @@
+<h1><%= @user.name %>さんのページ</h1>
+
+<% if @posts.present? %>
+
+<% @posts.each do |animalpic| %>
+<%= link_to post_path(animalpic.id) do %>
+<%= image_tag animalpic.animalpics[0]  %>
+<% end %>
+<% end %>
+
+<% else %>
+  <p>投稿はありません</p>
+<% end %>

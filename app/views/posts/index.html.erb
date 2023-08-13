@@ -1,0 +1,8 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<% @random.each do |post| %>
+<%= link_to post_path(post.id) do %>
+  <%= image_tag post.animalpics[0] %>
+  <% end %>
+<% end %>

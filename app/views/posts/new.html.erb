@@ -1,0 +1,23 @@
+<h1>新規投稿</h1>
+
+<%= form_with model: @post, local: true do |f| %>
+<h3>画像投稿</h3>
+<%= f.file_field :animalpics, multiple: true, local: true, name: 'post[animalpics][]' %>
+ <div id="new_animalpics"></div>
+
+
+<h3>タイトル</h3>
+<%= f.text_field :title %>
+
+
+<h3>どんな写真？</h3>
+<%= f.text_area :text %>
+
+<%= f.submit '投稿' %>
+
+<% end %>
+
+
+
+
+
