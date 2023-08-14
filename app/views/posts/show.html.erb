@@ -1,3 +1,7 @@
+<%= link_to user_path(@post.user) do %>
+<%= image_tag @post.user.get_profile_image %>
+<% end %>
+<%= @post.user.name %>
 
 
 <h2><%= @post.title %></h2>
@@ -13,6 +17,3 @@
 <%= link_to "投稿を削除", post_path(@post), method: :delete %>
 <% end %>
 
-<%= link_to user_path(@post.user) do %>
-<%= @post.user.name %>
-<% end %>
