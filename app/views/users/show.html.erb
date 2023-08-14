@@ -3,7 +3,24 @@
 <%= image_tag @user.get_profile_image %>
 <h1><%= @user.name %>さんのページ</h1>
 
-<
+<%= render 'relationships/btn', user: current_user %>
+<tr>
+<th>フォロー</th>
+<td>
+<%= link_to follows_user_path(@user) do %>
+<p><%= user.followers.count %></p>
+<% end %>
+</td>
+</tr>
+
+<tr>
+<th>フォロワー</th>
+<td>
+<%= link_to followers_user_path(@user) do %>
+<p><%= user.followeds.count %></p>
+<% end %>
+</td>
+</tr>
 
 <% if @posts.present? %>
 

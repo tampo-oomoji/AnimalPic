@@ -8,9 +8,6 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
 
-
-
-
   root to: 'posts#index'
   devise_for :users
   resources :users, only: [:show, :edit, :destroy, :update]
