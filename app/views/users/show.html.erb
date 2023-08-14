@@ -1,6 +1,9 @@
-<h1><%= @user.name %>さんのページ</h1>
+
 <!--プロフィール写真登録してるかどうか-->
 <%= image_tag @user.get_profile_image %>
+<h1><%= @user.name %>さんのページ</h1>
+
+<
 
 <% if @posts.present? %>
 
