@@ -19,3 +19,10 @@
 <%= link_to "投稿削除", post_path(@post), method: :delete %>
 <% end %>
 
+<h2>コメント</h2>
+<%= form_with(model:[@post, @comment], method: :post) do |f| %>
+<%= f.text_area :comment_content %>
+<%= f.hidden_field :post_id, value: @post.id %>
+<%= f.submit 'コメントする' %>
+<% end %>
+
