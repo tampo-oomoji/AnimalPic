@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
-  
-  devise_scope :user do
-  get '/users/sign_out' => 'devise/sessions#destroy'
-  end
-  
+
+
   resources :users, only: [:index, :show, :edit, :update] do
     member do
       get :follows, :followers
-    end 
+    end
     resource :relationships, only: [:create, :destroy]
-  end 
-  
-    
-  
+  end
+
+
+
 
   root to: 'posts#index'
   devise_for :users

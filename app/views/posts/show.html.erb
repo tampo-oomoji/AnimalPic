@@ -16,6 +16,6 @@
 <p><%= @post.text %></p>
 
 <% if @post.user == current_user %>
-<%= link_to "投稿を削除", post_path(@post), method: :delete %>
+<%= link_to "投稿削除", post_path(@post), method: :delete %>
 <% end %>
 
