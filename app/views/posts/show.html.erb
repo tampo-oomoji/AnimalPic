@@ -21,9 +21,9 @@
 
 <h2>コメント</h2>
 <% @comments.each do |comment| %>
-  <%= comment.comment_content %>
-  <%= comment.user.name %>
-  <%= image_tag comment.user.get_profile_image %>
+ <%= image_tag comment.user.get_profile_image %> 
+ <%= comment.user.name %>
+ <%= comment.comment_content %>
 <% end %>
 
 <%= form_with(model:[@post, @comment], method: :post) do |f| %>
