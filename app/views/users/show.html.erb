@@ -1,14 +1,15 @@
 
-<!--プロフィール写真登録してるかどうか-->
+
 <%= image_tag @user.get_profile_image %>
 <h1><%= @user.name %>さんのページ</h1>
-
-<%= render 'relationships/btn', user: current_user %>
-<tr>
+<% if current_user != @user %>
+  <%= render 'relationships/btn', user: @user %>
+<% end %>
+<br><tr>
 <th>フォロー</th>
 <td>
 <%= link_to follows_user_path(@user) do %>
-<p><%= user.followers.count %></p>
+  <p><%= @following_users.count %></p>
 <% end %>
 </td>
 </tr>
@@ -17,10 +18,11 @@
 <th>フォロワー</th>
 <td>
 <%= link_to followers_user_path(@user) do %>
-<p><%= user.followeds.count %></p>
+  <p><%= @follower_users.count %></p>
 <% end %>
 </td>
 </tr>
+
 
 <% if @posts.present? %>
 

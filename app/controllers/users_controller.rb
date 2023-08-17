@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
     @following_users = @user.following_users
     @follower_users = @user.follower_users
+
   end
 
   def edit
@@ -16,15 +17,16 @@ class UsersController < ApplicationController
     redirect_to user_path(user.id)
   end
 
-  def follows
-    user = User.find(params[:id])
-    @users = user.following_users
-  end
 
-  def followers
-    user = User.find(params[:id])
-    @user = user.follower_users
-  end
+   def follows
+   user = User.find(params[:id])
+   @users = user.following_users
+   end
+
+ def followers
+   user = User.find(params[:id])
+   @users = user.follower_users
+ end
 
 
 
