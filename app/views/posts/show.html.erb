@@ -17,11 +17,12 @@
 
 <% if @post.user == current_user %>
 <%= link_to "投稿削除", post_path(@post), method: :delete %>
+<%= link_to "編集", post_path(@post) %>
 <% end %>
 
 <h2>コメント</h2>
 <% @comments.each do |comment| %>
- <%= image_tag comment.user.get_profile_image %> 
+ <%= image_tag comment.user.get_profile_image %>
  <%= comment.user.name %>
  <%= comment.comment_content %>
 <% end %>

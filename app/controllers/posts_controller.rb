@@ -16,7 +16,37 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if params[:post][:animalpics_ids]
+      params[:post][:animalpics_ids].each do |animalpics_id|
+        animalpic = @post.animalpics.find(animalpics_id)
+        animalpic.purge
+      end
+      else
+        render :edit
+    end
+
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html{ redirect_to @post, notice: "Post was successfully update." }
+        format.json{ render :show, status: :ok, location: @post }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+        format.json{ render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+
+
+
+
+
+
+    end
 
   def index
     @random = Post.order("RANDOM()").limit(3)
