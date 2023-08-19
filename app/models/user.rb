@@ -23,7 +23,8 @@ class User < ApplicationRecord
 
   has_many :following_users, through: :followers, source: :followed
   has_many :follower_users, through: :followeds, source: :follower
-
+  has_many :favorites, dependent: :destroy
+  
   has_one_attached :profile_image
 
   def follow(user_id)
