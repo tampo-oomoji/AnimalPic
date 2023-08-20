@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update] do
     member do
-      get :follows, :followers
+      get :follows, :followers, :favorites
+
     end
     resource :relationships, only: [:create, :destroy]
   end
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
 
-
+ 
 
   get 'homes/about'
 

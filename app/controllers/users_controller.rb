@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :set_user, only: [:favorites]
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -28,11 +31,20 @@ class UsersController < ApplicationController
    @users = user.follower_users
  end
 
+ def favorites
+   favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+   @favorite_posts = Post.find(favorites)
+ end
+
 
 
 private
 def user_params
   params.require(:user).permit(:title, :body, :profile_image)
+end
+
+def set_user
+  @user = User.find(params[:id])
 end
 
 end

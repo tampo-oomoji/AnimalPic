@@ -14,4 +14,9 @@ class FavoritesController < ApplicationController
     redirect_to post_path(post)
   end
 
+  def index
+    @favorites = current_user.favorites
+  end
+
+
 end

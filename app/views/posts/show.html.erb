@@ -42,7 +42,7 @@
  <%= comment.user.name %>
  <%= comment.comment_content %>
  <% if current_user.admin? %>
- <%= link_to "削除", post_comment_path(comment.id), method: :delete %>
+ <%= link_to "削除", post_comment_path(@post, comment), method: :delete %>
  <% end %>
 <% end %>
 
