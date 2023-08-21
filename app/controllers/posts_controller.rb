@@ -27,8 +27,7 @@ class PostsController < ApplicationController
         animalpic = @post.animalpics.find(animalpics_id)
         animalpic.purge
     end
-    else
-        render :edit
+
     end
 
     respond_to do |format|

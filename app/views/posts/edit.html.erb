@@ -7,7 +7,7 @@
 <%= f.text_area :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %>
 
  <div style="display: flex; flex-wrap: wrap; width: 750px;">
-   
+
    <p>画像の削除</p>
     <% @post.animalpics.each do |animalpics| %>
       <div style="display: flex; margin:5px 5px 5px 0;">
@@ -19,7 +19,7 @@
     <% end %>
     </div>
      <label for="inputAnimalpic">画像の追加</label>
-  <%= f.file_field :animalpic, placeholder: "画像の追加", accept: "image/*" %>  
+  <%= f.file_field :animalpics, placeholder: "画像の追加", accept: "image/*" %>
 
     <label for ="inputText">本文</label>
     <%= f.text_area :text, autofocus: true, id:"inputText", placeholder:"本文" %>
