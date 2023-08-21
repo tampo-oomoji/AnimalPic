@@ -1,3 +1,9 @@
+
+<% @tag_list.each do |list| %>
+<%= link_to list.name,search_tag_path(post_tag_id: list.id) %>
+<%= "(#{list.posts.count})" %>
+<% end %>
+
 <% @random.each do |post| %>
 <%= link_to post_path(post.id) do %>
   <%= image_tag post.animalpics[0].variant(resize:'100x100').processed %>

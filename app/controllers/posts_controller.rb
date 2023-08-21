@@ -8,7 +8,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    tag_list = params[:post][:name].split(',')
     if @post.save
+      @post.save_post_tags(tag_list)
       redirect_to post_path(@post)
     else
       render :new
@@ -17,10 +19,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.post_tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:name].split(',')
 
     if params[:post][:animalpics_ids]
       params[:post][:animalpics_ids].each do |animalpics_id|
@@ -29,32 +33,48 @@ class PostsController < ApplicationController
     end
 
     end
+    if @post.update(post_params)
+      @post.save_post_tags(tag_list)
+      redirect_to post_path(@post)
 
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html{ redirect_to @post, notice: "Post was successfully update." }
-        format.json{ render :show, status: :ok, location: @post }
-      else
-          format.html { render :edit, status: :unprocessable_entity }
-        format.json{ render json: @post.errors, status: :unprocessable_entity }
-      end
+    else
+      render :edit
     end
+
+
+
+    # respond_to do |format|
+    #   if @post.update(post_params)
+    #     format.html{ redirect_to @post, notice: "Post was successfully update." }
+    #     format.json{ render :show, status: :ok, location: @post }
+    #   else
+    #       format.html { render :edit, status: :unprocessable_entity }
+    #     format.json{ render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
   end
 
-
-
-
-
+  def search_tag
+    @tag_list = PostTag.all
+    @tag = PostTag.find(params[:post_tag_id])
+    @posts = @tag.posts
+  end
 
   def index
     @random = Post.order("RANDOM()").limit(3)
+    @posts = Post.all
+    @tag_list = PostTag.all
   end
 
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
+
     @comment = Comment.new
+    @tag_list = @post.post_tags.pluck(:name).join(',')
+    @post_tags = @post.post_tags
+
   end
 
   def destroy
@@ -65,7 +85,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :text, animalpics: [])
+    params.require(:post).permit(:title, :text, animalpics: [], )
   end
 
   def correct_user

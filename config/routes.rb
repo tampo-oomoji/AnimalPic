@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 
  
-
+  get "search_tag" => "posts#search_tag"
   get 'homes/about'
 
 

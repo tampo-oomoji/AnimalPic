@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_19_172615) do
+ActiveRecord::Schema.define(version: 2023_08_21_094903) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,23 @@ ActiveRecord::Schema.define(version: 2023_08_19_172615) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "post_tag_relations", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "post_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "post_tag_id"], name: "index_post_tag_relations_on_post_id_and_post_tag_id", unique: true
+    t.index ["post_id"], name: "index_post_tag_relations_on_post_id"
+    t.index ["post_tag_id"], name: "index_post_tag_relations_on_post_tag_id"
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_post_tags_on_name", unique: true
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "text"
     t.string "title", null: false
@@ -101,5 +118,7 @@ ActiveRecord::Schema.define(version: 2023_08_19_172615) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "post_tag_relations", "post_tags"
+  add_foreign_key "post_tag_relations", "posts"
   add_foreign_key "posts", "users"
 end
