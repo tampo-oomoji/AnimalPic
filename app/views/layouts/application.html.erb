@@ -15,6 +15,12 @@
   <body>
     <header>
       <% if user_signed_in? %>
+       <li><% if controller_name != 'sessions' %>
+            <%= search_form_for @q, url: search_path do |f| %>
+            <%= f.search_field :text_cont %>
+            <button class="btn btn-outline-success" type="submit">検索</button>
+            <% end %>
+            <% end %></li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
@@ -34,6 +40,7 @@
           <%= link_to "ログイン", new_user_session_path %>
 
         </li>
+
         <% end %>
 
     </header>

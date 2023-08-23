@@ -1,0 +1,24 @@
+<div class="container">
+  <div class='row'>
+    <table class="table border table-hover table-inverse" >
+      <% if @result == [] %>
+      <h3 class="mt-3 text-contener">検索結果がありません</h3>
+      <% elsif @post.present? %>
+      <% search_word = @q.text_cont %>
+
+      <h2 class="mt-3">検索結果"<%= search_word %>"</h2>
+      <% @post.each do |post| %>
+      <%= link_to post_path(post.id) do %>
+      <%= image_tag post.animalpics[0] %>
+      <% end %>
+      <% end %>
+
+      <% else %>
+      <h3 class="mt-3 text-center">検索結果がありません</h3>
+      <% end %>
+
+
+
+    </table>
+  </div>
+</div>

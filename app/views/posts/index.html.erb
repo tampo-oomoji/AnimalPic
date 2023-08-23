@@ -1,4 +1,4 @@
-
+animalpics
 <% @tag_list.each do |list| %>
 <%= link_to list.name,search_tag_path(post_tag_id: list.id) %>
 <%= "(#{list.posts.count})" %>

@@ -11,6 +11,10 @@ class Post < ApplicationRecord
   validates :text, presence: true
   validates :animalpics, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["text"]
+  end
+
  def favorited_by?(user)
    favorites.exists?(user_id: user.id)
  end
