@@ -13,9 +13,13 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import 'hammerjs';
+
 
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 require('./preview')
+require('jquery')
+require("./slick") 

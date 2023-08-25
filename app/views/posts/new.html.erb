@@ -1,29 +1,42 @@
+
+<div class="container">
+  <div class="row">
+ <div class="col-md-10 col-md-offset-1">
+
 <h1>新規投稿</h1>
 
 <%= form_with model: @post, local: true do |f| %>
 <h3>画像投稿</h3>
 <%= f.file_field :animalpics, multiple: true, local: true, name: 'post[animalpics][]' %>
- <div id="new_animalpics"></div>
 
+</div>
 
-
+<div class="col-md-10 col-md-offset-1">
 
 <h3>タイトル</h3>
 <%= f.text_field :title %>
+</div>
 
-
+<div class="col-md-10 col-md-offset-1">
 <h3>どんな写真？</h3>
 <%= f.text_area :text %>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
 
 <h1>タグ</h1>
 <%= f.text_field :name %>
-
-
-<%= f.submit '投稿' %>
-
+</div>
+<div class="col mt-3 col-md-10 col-md-offset-1">
+  <div class="btn-post">
+  <div class="btn-group">
+<button type="submit" class ="btn btn-info btn-lg">投稿</button>
+</div>
+</div>
+</div>
 <% end %>
 
-
-
+</div>
+</div>
 
 

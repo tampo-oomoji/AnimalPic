@@ -1,12 +1,21 @@
-animalpics
-<% @tag_list.each do |list| %>
-<%= link_to list.name,search_tag_path(post_tag_id: list.id) %>
-<%= "(#{list.posts.count})" %>
-<% end %>
-
+<!--animalpics-->
+<!--<% @tag_list.each do |list| %>-->
+<!--<%= link_to list.name,search_tag_path(post_tag_id: list.id) %>-->
+<!--<%= "(#{list.posts.count})" %>-->
+<!--<% end %>-->
+<div class = "container">
+  <div class ="row no-gutters">
+    
+    
+  
 
 <% @random.each do |post| %>
 <%= link_to post_path(post.id) do %>
   <%= image_tag post.animalpics[0].variant(resize:'100x100').processed %>
   <% end %>
-<% end %>
+  <%= image_tag post.user.get_profile_image %>
+  <%= post.user.name %>
+  <% end %>
+  
+  </div>
+  </div>
