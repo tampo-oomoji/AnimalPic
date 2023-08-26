@@ -13,5 +13,5 @@
  *= require_tree .
  *= require_self
  */
-@import "slick-them";
+@import "slick-theme";
 @import "slick";
