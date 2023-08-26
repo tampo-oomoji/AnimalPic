@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'jquery-ui-rails'
+gem 'jquery-rails'
 gem 'ransack'
 
 gem 'dotenv-rails'

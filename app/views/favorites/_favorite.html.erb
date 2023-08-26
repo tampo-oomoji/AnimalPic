@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+  <% if post.favorited_by?(current_user) %>
+    <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+      <p><i class="fa-solid fa-paw fa-2xl"></i><%= post.favorites.count %>いいね</p>
+    <% end %>
+  <% else %>
+    <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+      <p><i class="fa-solid fa-paw fa-2xl" style="color: #e0e0e0;"></i>
+      <%= post.favorites.count %>いいね</p>
+    <% end %>
+  <% end %>
+
+<% else %>
+  <p><i class="fa-solid fa-paw fa-2xl"></i><%= post.favorites.count %>いいね</p>
+<% end %>
+

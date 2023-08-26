@@ -1,39 +1,51 @@
 
 
-<%= image_tag @user.get_profile_image %>
-<h1><%= @user.name %>さんのページ</h1>
-<% if current_user != @user %>
+<div class="user">
+ <div class="d-flex align-items-center">
+  <div class="userinfo">
+   <%= image_tag @user.get_profile_image %>
+  </div>
+
+  <div class="userinfo">
+   <h1><%= @user.name %>さんのページ</h1>
+  </div>
+ </div>
+</div>
+
+<div class="follow">
+ <% if current_user != @user %>
   <%= render 'relationships/btn', user: @user %>
-<% end %>
-<br><tr>
-<th>フォロー</th>
-<td>
-<%= link_to follows_user_path(@user) do %>
-  <p><%= @following_users.count %></p>
-<% end %>
-</td>
-</tr>
+ <% end %>
+ <tr>
+  <th>フォロー:</th>
+  
+    <%= link_to follows_user_path(@user) do %>
+     <p><%= @following_users.count %></p>
+    <% end %>
+   
+ </tr>
+</div>
 
 <tr>
-<th>フォロワー</th>
-<td>
-<%= link_to followers_user_path(@user) do %>
-  <p><%= @follower_users.count %></p>
-<% end %>
-</td>
+ <th>フォロワー</th>
+  <td>
+   <%= link_to followers_user_path(@user) do %>
+    <p><%= @follower_users.count %></p>
+   <% end %>
+  </td>
 </tr>
 
 
 <% if @posts.present? %>
 
-<% @posts.each do |animalpic| %>
-<%= link_to post_path(animalpic.id) do %>
-<%= image_tag animalpic.animalpics[0]  %>
-<% end %>
+ <% @posts.each do |animalpic| %>
+  <%= link_to post_path(animalpic.id) do %>
+  <%= image_tag animalpic.animalpics[0].variant(resize:'200x200').processed  %>
+ <% end %>
 <% end %>
 
 <% else %>
-  <p>投稿はありません</p>
+ <p>投稿はありません</p>
 <% end %>
 
 <p><%= link_to"いいねした記事", favorites_user_path(@user) %></p>
