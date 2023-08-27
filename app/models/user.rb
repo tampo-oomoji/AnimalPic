@@ -38,6 +38,10 @@ class User < ApplicationRecord
   def following?(user)
     following_users.include?(user)
   end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end 
 
 
   # def get_profile_image(width, height)

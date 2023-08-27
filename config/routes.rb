@@ -26,10 +26,14 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
 
- 
+
   get "search_tag" => "posts#search_tag"
   get 'homes/about'
   get "search" => "searches#search"
+
+  get '/user/check' => 'users#check'
+  patch '/user/withdraw' => 'users#withdraw'
+
 
 
 
