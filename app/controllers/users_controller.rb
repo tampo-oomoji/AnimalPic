@@ -36,8 +36,6 @@ class UsersController < ApplicationController
    @favorite_posts = Post.find(favorites)
  end
 
-
-
  def withdraw
    @user = User.find(current_user.id)
    @user.update(is_deleted: true)
@@ -45,8 +43,6 @@ class UsersController < ApplicationController
    flash[:notice] = "退会しました"
    redirect_to root_path
  end
-
-
 
 private
 def user_params
