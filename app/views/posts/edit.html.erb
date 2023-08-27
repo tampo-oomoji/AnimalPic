@@ -1,32 +1,25 @@
 <h1>編集</h1>
-
-
-
 <%= form_with model: @post do |f| %>
-<label for = "inputTitle" >タイトル</label>
-<%= f.text_area :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %>
-
+ <label for = "inputTitle" >タイトル</label>
+ <%= f.text_area :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %>
  <div style="display: flex; flex-wrap: wrap; width: 750px;">
-
-   <p>画像の削除</p>
-    <% @post.animalpics.each do |animalpics| %>
-      <div style="display: flex; margin:5px 5px 5px 0;">
-        <%= f.check_box :animalpics_ids, { multiple: true }, animalpics.id, false %>
-        <label for="user_animalpics_ids_<%= animalpics.id %>" >
-          <%= image_tag animalpics, size: '100x100' %>
-        </label>
-      </div>
-    <% end %>
-    </div>
-     <label for="inputAnimalpic">画像の追加</label>
-  <%= f.file_field :animalpics, placeholder: "画像の追加", accept: "image/*" %>
-
-    <label for ="inputText">本文</label>
-    <%= f.text_area :text, autofocus: true, id:"inputText", placeholder:"本文" %>
-
-    <label>タグ(,で区切ると複数タグ登録できます)</label>
-    <%= f.text_field :name,value: @tag_list %>
-    <%= f.submit "変更を保存" %>
-    <% end %>
+  <p>画像の削除</p>
+  <% @post.animalpics.each do |animalpics| %>
+   <div style="display: flex; margin:5px 5px 5px 0;">
+    <%= f.check_box :animalpics_ids, { multiple: true }, animalpics.id, false %>
+    <label for="user_animalpics_ids_<%= animalpics.id %>" >
+     <%= image_tag animalpics, size: '100x100' %>
+    </label>
+   </div>
+  <% end %>
+ </div>
+ <label for="inputAnimalpic">画像の追加</label>
+ <%= f.file_field :animalpics, placeholder: "画像の追加", accept: "image/*" %>
+ <label for ="inputText">本文</label>
+ <%= f.text_area :text, autofocus: true, id:"inputText", placeholder:"本文" %>
+ <label>タグ(,で区切ると複数タグ登録できます)</label>
+ <%= f.text_field :name,value: @tag_list %>
+ <%= f.submit "変更を保存" %>
+<% end %>
 
 

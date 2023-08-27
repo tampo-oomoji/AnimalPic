@@ -3,10 +3,10 @@
   <div class ="row no-gutters">
     <% @random.each do |post| %>
       <%= link_to post_path(post.id) do %>
-        <%= image_tag post.animalpics[0].variant(resize:'100x100').processed %>
+        <%= image_tag post.animalpics[0], size: "200x200"%>
       <% end %>
-      <%= image_tag post.user.get_profile_image %>
+      <%= image_tag post.user.get_profile_image, size: "30x30" %>
       <%= post.user.name %>
-     <% end %>
+    <% end %>
   </div>
 </div>

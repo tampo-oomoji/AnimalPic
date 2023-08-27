@@ -1,11 +1,8 @@
-
-
 <div class="user">
  <div class="d-flex align-items-center">
   <div class="userinfo">
    <%= image_tag @user.get_profile_image %>
   </div>
-
   <div class="userinfo">
    <h1><%= @user.name %>さんのページ</h1>
   </div>
@@ -18,11 +15,9 @@
  <% end %>
  <tr>
   <th>フォロー:</th>
-  
-    <%= link_to follows_user_path(@user) do %>
-     <p><%= @following_users.count %></p>
-    <% end %>
-   
+   <%= link_to follows_user_path(@user) do %>
+    <p><%= @following_users.count %></p>
+   <% end %>
  </tr>
 </div>
 
@@ -37,12 +32,11 @@
 
 
 <% if @posts.present? %>
-
  <% @posts.each do |animalpic| %>
   <%= link_to post_path(animalpic.id) do %>
-  <%= image_tag animalpic.animalpics[0].variant(resize:'200x200').processed  %>
+   <%= image_tag animalpic.animalpics[0].variant(resize:'200x200').processed  %>
+  <% end %>
  <% end %>
-<% end %>
 
 <% else %>
  <p>投稿はありません</p>

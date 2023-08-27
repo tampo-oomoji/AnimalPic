@@ -16,64 +16,60 @@
    </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">AnimalPic</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
+   <header>
+    <% if user_signed_in? %>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">AnimalPic</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
 
-       <div class"collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+      <div class"collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 
-      <li class="nav-logout">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mr-3" %>
-      </li>
-      <li class="nav-mypage">
-        <%= link_to "マイページ", user_path(current_user), class: "mr-3" %>
-      </li>
-      <li class="nav-post">
-        <%= link_to "投稿する", new_post_path, class: "mr-3" %>
-      </li>
-      </ul>
+        <li class="nav-logout">
+         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mr-3" %>
+        </li>
+        <li class="nav-mypage">
+         <%= link_to "マイページ", user_path(current_user), class: "mr-3" %>
+        </li>
+        <li class="nav-post">
+         <%= link_to "投稿する", new_post_path, class: "mr-3" %>
+        </li>
+       </ul>+
       </div>
 
-      <li><% if controller_name != 'sessions' %>
-            <%= search_form_for @q, url: search_path do |f| %>
-            <%= f.search_field :text_cont %>
-            <button class="btn btn-outline-success" type="submit">投稿を検索</button>
-            <% end %>
-            <% end %>
-      </li>
-      </nav>
-
-      <% else %>
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">AnimalPic</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-
-       <div class"collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
-      <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "mr-3" %></li>
-
-        <li>
-          <%= link_to "新規登録", new_user_registration_path, class: "mr-3" %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path, class: "mr-3" %>
-
-        </li>
-        </ul>
-
-
+      <li>
+       <% if controller_name != 'sessions' %>
+        <%= search_form_for @q, url: search_path do |f| %>
+         <%= f.search_field :text_cont %>
+         <button class="btn btn-outline-success" type="submit">投稿を検索</button>
         <% end %>
-        </div>
+       <% end %>
+      </li>
+     </nav>
 
-    </header>
-    <%= yield %>
+    <% else %>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">AnimalPic</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class"collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav mr-auto">
+        <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "mr-3" %></li>
+        <li>
+         <%= link_to "新規登録", new_user_registration_path, class: "mr-3" %>
+        </li>
+        <li>
+         <%= link_to "ログイン", new_user_session_path, class: "mr-3" %>
+        </li>
+       </ul>
+      </div>
+     </nav>
+    <% end %>
+   </header>
+   <%= yield %>
   </body>
 </html>
