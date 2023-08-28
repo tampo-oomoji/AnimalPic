@@ -43,15 +43,17 @@
      <% end %>
     </div>
    </div>
+   <% if user_signed_in? %>
     <%= form_with(model:[@post, @comment], method: :post) do |f| %>
      <%= f.text_area :comment_content %>
      <%= f.hidden_field :post_id, value: @post %>
      <button class="btn-success" type="submit">送信</button>
     <% end %>
-   </div>
+   <% end %>
   </div>
  </div>
 </div>
+
 
 <div class="p-3">
  <p>投稿者<%= link_to user_path(@post.user) do %>
