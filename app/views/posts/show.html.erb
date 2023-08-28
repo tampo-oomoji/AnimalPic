@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
  <div class="row">
-  <div class="col-px0">
+  <div class="col-px0 pr-0">
    <div class="col-lg-8">
     <div class="slider_container">
      <div class="slider">
@@ -17,12 +17,36 @@
    </div>
   </div>
 
-  <div class="col-lg-4">
-  <h2><%= @post.title %></h2>
-  <p><%= @post.text %></p>
-  <% @post_tags.each do |tag| %>
-   <%= link_to tag.name,search_tag_path(post_tag_id: tag.id) %>
-  <% end %>
+  <div class="col-lg-4 pr-0">
+   <h2><%= @post.title %></h2>
+   <p><%= @post.text %></p>
+   <p class="mb-0">タグ</p>
+   <div class="pt-0">
+    <% @post_tags.each do |tag| %>
+     <%= link_to tag.name,search_tag_path(post_tag_id: tag.id) %>
+    <% end %>
+   </div>
+   <div class="mt-5 pr-0">
+    <h5>コメント</h5>
+    <div class="row">
+     <% @comments.each do |comment| %>
+      <div class="col-3">
+       <%= image_tag comment.user.get_profile_image, size: "10×10" %>
+       <%= comment.user.name %>
+      </div>
+      <div class="col-9"><%= comment.comment_content %></div>
+      <% if current_user.admin? %>
+       <%= link_to "削除", post_comment_path(@post, comment), method: :delete %>
+      <% end %>
+     <% end %>
+    </div>
+   </div>
+    <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+     <%= f.text_area :comment_content %>
+     <%= f.hidden_field :post_id, value: @post %>
+     <button class="btn-success" type="submit">送信</button>
+    <% end %>
+   </div>
   </div>
  </div>
 </div>
@@ -45,25 +69,10 @@
   <% end %>
  <% end %>
 
-<div id="favorite_btn_<%= @post.id %>">
- <%= render "favorites/favorite", post: @post %>
+<div class="mt-5">
+ <div id="favorite_btn_<%= @post.id %>">
+  <%= render "favorites/favorite", post: @post %>
+ </div>
 </div>
 
-<div class="p-3">
- <h2>コメント</h2>
- <% @comments.each do |comment| %>
-  <%= image_tag comment.user.get_profile_image %>
-  <%= comment.user.name %>
-  <%= comment.comment_content %>
-  <% if current_user.admin? %>
-   <%= link_to "削除", post_comment_path(@post, comment), method: :delete %>
-  <% end %>
- <% end %>
-
- <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-  <%= f.text_area :comment_content %>
-  <%= f.hidden_field :post_id, value: @post %>
-  <%= f.submit 'コメントする' %>
- <% end %>
-</div>
 
