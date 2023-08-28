@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
- 
-@import "slick-theme";
+ @import "slick-theme";
 @import "slick";
+
+.icon{
+  width: 80px;
+  height: 80px;
+}

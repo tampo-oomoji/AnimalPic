@@ -19,7 +19,7 @@
    <header>
     <% if user_signed_in? %>
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">AnimalPic</a>
+      <a class="navbar-brand" href="#"><%= image_tag 'AnimalPic.png', class: 'icon' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,23 +30,24 @@
         <li class="nav-logout">
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mr-3" %>
         </li>
-        <li class="nav-mypage">
+        <li class="nav-mypage mr-3">
          <%= link_to "マイページ", user_path(current_user), class: "mr-3" %>
+
         </li>
         <li class="nav-post">
          <%= link_to "投稿する", new_post_path, class: "mr-3" %>
         </li>
-       </ul>+
+       </ul>
       </div>
 
-      <li>
+      <div class="nav-search ml-auto">
        <% if controller_name != 'sessions' %>
         <%= search_form_for @q, url: search_path do |f| %>
          <%= f.search_field :text_cont %>
          <button class="btn btn-outline-success" type="submit">投稿を検索</button>
         <% end %>
        <% end %>
-      </li>
+      </div>
      </nav>
 
     <% else %>
@@ -66,6 +67,14 @@
          <%= link_to "ログイン", new_user_session_path, class: "mr-3" %>
         </li>
        </ul>
+      </div>
+      <div class="nav-search ml-auto">
+       <% if controller_name != 'sessions' %>
+        <%= search_form_for @q, url: search_path do |f| %>
+         <%= f.search_field :text_cont %>
+         <button class="btn btn-outline-success" type="submit">投稿を検索</button>
+        <% end %>
+       <% end %>
       </div>
      </nav>
     <% end %>
