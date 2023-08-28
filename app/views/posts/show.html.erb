@@ -31,12 +31,14 @@
     <div class="row">
      <% @comments.each do |comment| %>
       <div class="col-3">
-       <%= image_tag comment.user.get_profile_image, size: "10×10" %>
+       <%= image_tag comment.user.get_profile_image, size: '30x30' %>
        <%= comment.user.name %>
       </div>
       <div class="col-9"><%= comment.comment_content %></div>
-      <% if current_user.admin? %>
-       <%= link_to "削除", post_comment_path(@post, comment), method: :delete %>
+      <% if user_signed_in? %>
+       <% if current_user.admin? %>
+        <%= link_to "削除", post_comment_path(@post, comment), method: :delete %>
+       <% end %>
       <% end %>
      <% end %>
     </div>
@@ -53,7 +55,7 @@
 
 <div class="p-3">
  <p>投稿者<%= link_to user_path(@post.user) do %>
-  <%= image_tag @post.user.get_profile_image %>
+  <%= image_tag @post.user.get_profile_image, size: "30x30" %>
   <%= @post.user.name %>
  <% end %></p>
 </div>
