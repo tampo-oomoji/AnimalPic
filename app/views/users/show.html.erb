@@ -42,8 +42,9 @@
  <p>投稿はありません</p>
 <% end %>
 
-<p><%= link_to"いいねした記事", favorites_user_path(@user) %></p>
+<p><i class="fa-solid fa-paw"></i><%= link_to"いいねした記事", favorites_user_path(@user) %><i class="fa-solid fa-paw"></i></p>
 <% if user_signed_in? %>
+
  <% if current_user.admin? %>
   <% if @user.is_deleted %>
    <h2>退会済み<h2>

@@ -28,13 +28,21 @@
        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 
         <li class="nav-logout">
+         <%= link_to destroy_user_session_path, methd: :delete do %>
+          <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
+         <% end %>
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mr-3" %>
         </li>
         <li class="nav-mypage mr-3">
+         <%= link_to user_path(current_user) do %>
+          <i class="fa-regular fa-user fa-2xl"></i>
+         <% end %>
          <%= link_to "マイページ", user_path(current_user), class: "mr-3" %>
-
         </li>
         <li class="nav-post">
+         <%= link_to new_post_path do %>
+          <i class="fa-solid fa-cat fa-2xl"></i>
+         <% end %>
          <%= link_to "投稿する", new_post_path, class: "mr-3" %>
         </li>
        </ul>
