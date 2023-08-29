@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  devise_scope :user do
    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
  end
- 
+
  namespace :admin do
    patch "withdraw/:id" => "users#withdraw", as: "withdraw"
  end
@@ -21,13 +21,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]  #commentsコントローラへのルーティング
     resource :favorites, only: [:create, :destroy]
   end
-  
+
   root to: 'posts#index'
   get "search_tag" => "posts#search_tag"
   get 'homes/about'
   get "search" => "searches#search"
   get '/user/check' => 'users#check'
-  patch '/user/withdraw' => 'users#wi
-  thdraw'
+  patch '/user/withdraw' => 'users#withdraw'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
