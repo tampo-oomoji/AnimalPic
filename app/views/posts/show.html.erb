@@ -26,15 +26,15 @@
      <%= link_to tag.name,search_tag_path(post_tag_id: tag.id) %>
     <% end %>
    </div>
-   <div class="mt-5 pr-0">
+   <div class="mt-5">
     <h5>コメント<i class="fa-regular fa-comment ml-2"></i></h5>
     <div class="row">
      <% @comments.each do |comment| %>
-      <div class="col-3">
+      <div class="col-2 pr-1">
        <%= image_tag comment.user.get_profile_image, size: '50x50' %>
       </div>
-      <div class="col-9">
-       <%= comment.user.name %>
+      <div class="col-10">
+       <p class="font-weight-bold"><%= comment.user.name %></p>
        <div class="comment-content">
         <%= comment.comment_content %>
        </div>
