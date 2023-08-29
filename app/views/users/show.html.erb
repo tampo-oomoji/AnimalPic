@@ -1,7 +1,7 @@
 <div class="user">
  <div class="d-flex align-items-center">
   <div class="userinfo">
-   <%= image_tag @user.get_profile_image %>
+   <%= image_tag @user.get_profile_image, size: "100x100" %>
   </div>
   <div class="userinfo">
    <h1><%= @user.name %>さんのページ</h1>
@@ -45,6 +45,7 @@
 <p><i class="fa-solid fa-paw"></i><%= link_to"いいねした記事", favorites_user_path(@user) %><i class="fa-solid fa-paw"></i></p>
 <% if user_signed_in? %>
  <% if @user == current_user %>
+  <%= link_to "プロフィール編集", edit_user_path %>
   <%= link_to "退会する", user_check_path, class: "btn btn-danger" %>
  <% end %>
  <% if current_user.admin? %>
