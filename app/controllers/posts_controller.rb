@@ -62,7 +62,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    sample_ids = Post.all.ids.sample(10)
+    sample_ids = Post.all.ids.sample(6)
     @random = Post.where(id: sample_ids)
     @posts = Post.all
     @tag_list = PostTag.all
