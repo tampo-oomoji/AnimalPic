@@ -1,6 +1,6 @@
 <h2>タグ:<%= @tag.name %>の投稿</h2>
 <% @tag.posts.each do |list|%>
  <%= link_to post_path(list.id) do %>
-  <%= image_tag list.animalpics[0] %>
+  <%= image_tag list.animalpics[0], size: "200x200" %>
  <% end %>
 <% end %>
