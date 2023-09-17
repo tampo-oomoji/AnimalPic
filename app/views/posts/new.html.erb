@@ -7,10 +7,12 @@
     <h3>画像投稿</h3>
     <%= f.file_field :animalpics, multiple: true, local: true, name: 'post[animalpics][]', onchange: "loadImage(this);" %>
    </div>
-   <div id="post_images" style="display: none;">
+   <div class="col-md-10 mx-auto" id="post_images" style="display: none;">
     <p id="preview"></p>
    </div>
+
    <%= render "loadimage" %>
+
   </div>
    <div class="col-md-10 mx-auto">
    <h3>タイトル</h3>
