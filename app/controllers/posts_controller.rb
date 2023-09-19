@@ -23,9 +23,9 @@ class PostsController < ApplicationController
       tag_list << tags
       @post.save_post_tags(tag_list.flatten.uniq)
       redirect_to post_path(@post)
-    else
-      render :new
-    end
+   else
+     render :new
+   end
 
   end
 
