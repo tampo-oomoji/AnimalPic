@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+   @post = current_user.posts.build(post_params)
+   if post_params[:animalpics].present?
     tags=[]
     post_params[:animalpics].each do | image |
       tags <<  Vision.get_image_data(image)
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
     tags = tags.flatten
 #    pp tags
     tag_list = params[:post][:name].split(',')
-    if @post.save
+    @post.save
       #tags.each do |tag|
       #  @post.tags.create(name: tag)
       #end
@@ -25,7 +26,9 @@ class PostsController < ApplicationController
     else
       render :new
     end
+
   end
+
 
   def edit
     @post = Post.find(params[:id])
