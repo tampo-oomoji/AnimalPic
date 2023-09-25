@@ -7,8 +7,8 @@ class Post < ApplicationRecord
   has_many :post_tag_relations, dependent: :destroy
   has_many :post_tags, through: :post_tag_relations
 
-  validates :title, presence: true
-  validates :text, presence: true
+  # validates :title, presence: true
+  # validates :text, presence: true
   validates :animalpics, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   end
 
  def favorited_by?(user)
-   
+
    favorites.exists?(user_id: user.id)
  end
 

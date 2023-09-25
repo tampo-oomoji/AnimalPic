@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def create
    @post = current_user.posts.build(post_params)
    if post_params[:animalpics].present?
+    # && @post.save
     tags=[]
     post_params[:animalpics].each do | image |
       tags <<  Vision.get_image_data(image)
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
       @post.save_post_tags(tag_list.flatten.uniq)
       redirect_to post_path(@post)
    else
+     flash[:notice] = "画像を入力してください"
      render :new
    end
 
