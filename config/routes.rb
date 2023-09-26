@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'posts#index'
+  get "new_index" => "posts#new_index"
   get "search_tag" => "posts#search_tag"
   get 'homes/about'
   get "search" => "searches#search"

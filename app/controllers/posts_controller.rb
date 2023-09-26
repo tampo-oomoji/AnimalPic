@@ -28,7 +28,6 @@ class PostsController < ApplicationController
      flash[:notice] = "画像を入力してください"
      render :new
    end
-
   end
 
 
@@ -51,13 +50,9 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       @post.save_post_tags(tag_list)
       redirect_to post_path(@post)
-
     else
       render :edit
     end
-
-
-
     # respond_to do |format|
     #   if @post.update(post_params)
     #     format.html{ redirect_to @post, notice: "Post was successfully update." }
@@ -67,7 +62,6 @@ class PostsController < ApplicationController
     #     format.json{ render json: @post.errors, status: :unprocessable_entity }
     #   end
     # end
-
   end
 
   def search_tag
@@ -83,10 +77,13 @@ class PostsController < ApplicationController
     @tag_list = PostTag.all
   end
 
+  def new_index
+    @posts = Post.page(params[:page]).per(6)
+  end
+
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-
     @comment = Comment.new
     @tag_list = @post.post_tags.pluck(:name).join(',')
     @post_tags = @post.post_tags
