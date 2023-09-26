@@ -17,6 +17,7 @@
   <div class="col-lg-4 pr-0">
    <h2><%= @post.title %></h2>
    <p><%= @post.text %></p>
+   <p><%= l @post.created_at %></p>
    <p class="mb-0">タグ</p>
    <div class="pt-0">
     <% @post_tags.each do |tag| %>

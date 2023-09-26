@@ -22,3 +22,12 @@ module AnimalPic
      config.active_storage.replace_on_assign_to_many = false
   end
 end
+
+module TimeFormatSandbox
+  class Application < Rails::Application
+    # ...
+    # タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
+    config.i18n.default_locale = :ja
+  end
+end
