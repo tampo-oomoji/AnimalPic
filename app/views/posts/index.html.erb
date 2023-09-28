@@ -1,4 +1,4 @@
-<h1>投稿一覧</h1>
+<h1>みんなの投稿</h1>
  <div class = "container">
   <div class="row">
    <% @random.each do |post| %>
@@ -15,5 +15,8 @@
     </div>
    <% end %>
   </div>
+  <%= link_to new_index_path do %>
+   <h3>新着順</h3>
+  <% end %>
  </div>
 </div>
