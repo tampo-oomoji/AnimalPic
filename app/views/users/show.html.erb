@@ -34,7 +34,7 @@
 <% if @posts.present? %>
  <% @posts.each do |animalpic| %>
   <%= link_to post_path(animalpic.id) do %>
-   <%= image_tag animalpic.animalpics[0], size: "200x200" %>
+   <%= image_tag animalpic.animalpics[0], class: "index-img" %>
   <% end %>
  <% end %>
 
