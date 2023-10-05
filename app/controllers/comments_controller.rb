@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
    comment = current_user.comments.new(comment_params)
    comment.post_id = post.id
    if comment.save
-   redirect_to post_path(post.id)
+    redirect_to post_path(post.id)
    else
-   redirect_to post_path(post.id)
+    redirect_to post_path(post.id)
    end
   end
 
@@ -14,9 +14,7 @@ class CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     comment = Comment.find(params[:id])
     comment.destroy
-
-     redirect_to post_path(post.id)
-
+    redirect_to post_path(post.id)
    end
 
   private
